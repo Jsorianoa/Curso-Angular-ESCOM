@@ -63,6 +63,31 @@ export class HeroesService {
      getHeroes(){
          return this.heroes
      }
+     getHeroe( idx:string ){
+      return this.heroes[idx];
+     }
+     buscarHeroe( termino:string ):Heroe[]{
+
+      let heroesArr:Heroe[]=[]; //arreglo de heroes temporal
+
+      termino = termino.toLowerCase(); //convertir la letra que se ingresa a minusculas
+
+      for(let heroe of this.heroes){  //buscar en todo el arreglo de heroes con el for
+
+        let nombre = heroe.nombre.toLowerCase();  //se agrega una variable para que pueda convertir la busqueda a minusculas
+
+        if( nombre.indexOf( termino ) >= 0 ){ 
+           //valida que se encuentre el index del arreglo si no regresa -1
+          heroesArr.push(heroe)
+          
+          console.log();
+
+        }
+      }
+
+      return heroesArr;
+
+     }
 }
 
 export interface Heroe{
