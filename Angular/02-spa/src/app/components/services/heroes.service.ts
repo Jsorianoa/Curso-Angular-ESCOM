@@ -72,15 +72,16 @@ export class HeroesService {
 
       termino = termino.toLowerCase(); //convertir la letra que se ingresa a minusculas
 
-      for(let heroe of this.heroes){  //buscar en todo el arreglo de heroes con el for
+      for(let i=0; i<this.heroes.length; i++){  //buscar en todo el arreglo de heroes con el for
+
+        let heroe = this.heroes[i];
 
         let nombre = heroe.nombre.toLowerCase();  //se agrega una variable para que pueda convertir la busqueda a minusculas
 
         if( nombre.indexOf( termino ) >= 0 ){ 
            //valida que se encuentre el index del arreglo si no regresa -1
+          heroe.idx = i; 
           heroesArr.push(heroe)
-          
-          console.log();
 
         }
       }
@@ -96,4 +97,5 @@ export interface Heroe{
     img:string;
     aparicion:string;
     casa:string;
+    idx?: number;
 }
